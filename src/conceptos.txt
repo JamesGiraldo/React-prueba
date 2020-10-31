@@ -1,0 +1,59 @@
+
+// function Hellowold(props) {
+//   // props es un objecto
+//   return (
+//     <div id="hello"> {props.mytext} </div>
+//   );
+// }
+
+class Hellowold extends React.Component {
+  state = {
+    show: true
+  }
+  // metodos o fucnion de la clase
+  toggleShow = () => {
+    this.setState({show: !this.state.show})
+  }
+  // metodo llamando render,retorna el elemento
+  render() {
+    if (this.state.show) {
+      return(
+        <div id="hello">
+        <h1> {this.props.titulo} </h1>
+        {this.props.mytext}
+        <button id="" onClick={this.toggleShow}>Ocultar</button>
+        </div>
+      )
+    } else {
+      return(
+        <div>
+          <h1> No esta jaja </h1>
+          <button id="" onClick={this.toggleShow}>Mostrarlo</button>
+        </div>
+      )
+    }
+  }
+}
+
+function App() {
+  return (
+    <div>
+     Este es mi componente:
+     <Hellowold mytext="hello fazt" titulo="Brrr"/>
+     <Hellowold mytext="hello?" titulo="titulo 2"/>
+     <Hellowold mytext="Hola papi" titulo="Yess"/>
+    </div>
+  );
+}
+// =============
+// formas de llamar un componente
+// con una función de flecha
+// con una clase
+// con una función normal de javascripts
+// const App = () => <div> Este es mi componente: <Hellowold/> </div>
+
+// class App extends React.Component {
+//   render() {
+//     return <div> Este es mi componente: <Hellowold/> </div>
+//   }
+// }
