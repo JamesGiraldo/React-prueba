@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // importar biblioteque
 import PropTypes from 'prop-types';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 class Tarea extends Component {
   StyleCompleted(){
@@ -14,14 +15,22 @@ class Tarea extends Component {
     const {tarea} = this.props;
     return(
       <div style={this.StyleCompleted()}>
-        { tarea.title } -
-        { tarea.description } -
-        { tarea.done } -
-        { tarea.id }
-        <input type="checkbox" onChange={this.props.checkDone.bind(this, tarea.id)} />
-        <button onClick={this.props.deleteTarea.bind(this, tarea.id)}>
-         X
-        </button>
+          <tbody>
+            <tr>
+              <th scope="row">
+              <td>{ tarea.id }</td>
+              <td>{ tarea.title }</td>
+              <td>{ tarea.description }</td>
+              <td>{ tarea.done }</td>
+              <td>
+                <input type="checkbox" className="mr-2" onChange={this.props.checkDone.bind(this, tarea.id)} />
+                <button className="btn btn-outline-danger ml-2" onClick={this.props.deleteTarea.bind(this, tarea.id)}>
+                 X
+                </button>
+              </td>
+              </th>
+            </tr>
+          </tbody>
       </div>
     )
   }

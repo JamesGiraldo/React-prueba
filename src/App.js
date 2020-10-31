@@ -10,6 +10,10 @@ import TareaForm from './components/TareaForm.js';
 import Tareas from './components/Tareas.js';
 import Posts from './components/Posts.js';
 
+// bootstrap
+import { Breadcrumb } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 class App extends Component {
   state = {
@@ -45,19 +49,31 @@ class App extends Component {
 
   render() {
     return(
-      <div>
+      <div className="container mt-4">
         <Router>
-          <Link to="/">Home</Link>
-          <br />
-          <Link to="/posts">API</Link>
+          <Breadcrumb className="mt-4 salta">
+            <Breadcrumb.Item active><Link to="/">Home</Link></Breadcrumb.Item>
+            <Breadcrumb.Item><Link to="/posts">API</Link></Breadcrumb.Item>
+          </Breadcrumb>
           <Route exact path="/" render={() => {
             return(
               <div>
                   <TareaForm addTarea={this.addTarea} />
-                  <Tareas
-                   tareas={this.state.tareas}
-                   deleteTarea={this.deleteTarea}
-                   checkDone={this.checkDone} />
+                  <table className="table table-hover">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>title</th>
+                        <th>Description</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                      </tr>
+                    </thead>
+                          <Tareas
+                           tareas={this.state.tareas}
+                           deleteTarea={this.deleteTarea}
+                           checkDone={this.checkDone} />
+                  </table>
               </div>
               )
             }}>

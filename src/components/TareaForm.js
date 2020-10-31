@@ -21,21 +21,27 @@ export default class TareaForm extends Component {
 
     render(){
       return(
-        <div className="container">
+        <div>
           <form onSubmit={this.onSubmit}>
-            <input
-              type="text"
-              name="title"
-              placeholder="Escribe una tarea"
-              onChange={ this.onChange }
-              value={ this.state.title } />
-            <br />
-            <textarea
-             name="description"
-             onChange={ this.onChange }
-             value={ this.state.description } >
-             </textarea>
-            <input type="submit" />
+            <div className="form-group">
+             <label>Titulo</label>
+             <input
+               type="text"
+               name="title"
+               placeholder="Escribe una tarea"
+               onChange={ this.onChange }
+               value={ this.state.title }
+               className="form-control" />
+            </div>
+            <div className="form-group">
+                <label>Description</label>
+                <textarea
+                name="description"
+                onChange={ this.onChange }
+                value={ this.state.description }
+                className="form-control" rows="3"></textarea>
+            </div>
+            <input type="submit" className="btn btn-outline-success ml-2"/>
           </form>
         </div>
       )
